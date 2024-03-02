@@ -1,8 +1,19 @@
-py_library(
-    name = "your_python_package",
-    srcs = glob(["*.py"]),
-    data = ["//cpp_source:pybind_kv.so"],  # 引用 cpp_source/BUILD 中定义的目标
+package(default_visibility = ["//visibility:public"])
+cc_binary(
+    name = "pybind_kv.so",
+    srcs = ["pybind_kv_service.cpp"],
+    linkshared =1,
+    linkstatic = 1,
     deps = [
-        # Python 依赖
+        "@com_resdb_nexres//common/proto:signature_info_cc_proto",
+        "@com_resdb_nexres//interface/kv:kv_client",
+        "@com_resdb_nexres//platform/config:resdb_config_utils",
+        "@pybind11//:pybind11",
     ],
 )
+py_library(
+    name = "pybind_kv_so",
+    data = [":pybind_kv.so"],
+    imports = ["."],
+)
+

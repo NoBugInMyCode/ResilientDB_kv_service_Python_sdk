@@ -1,0 +1,4 @@
+/bazel-testlogs/
+/bazel-ResilientDB_kv_service_Python_sdk/
+/bazel-out/
+/bazel-bin/
