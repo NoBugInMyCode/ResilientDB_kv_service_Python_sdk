@@ -10,4 +10,9 @@ GraphQL
 3. From `kv_operation.py` import `get_value` and `set_value` function into your Python file to use it
 
 ## Example
-TODO
+```angular2html
+from ResilientDB_kv_service_Python_sdk.kv_operation import get_value, set_value
+
+set_value("test", "111222")
+get_value("test")
+```
