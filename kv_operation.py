@@ -1,11 +1,12 @@
 import os
 import sys
-
-sys.path.append("bazel-out/k8-fastbuild/bin/")
+current_file_path = os.path.abspath(__file__)
+current_dir = os.path.dirname(current_file_path)
+sys.path.append(current_dir + "/bazel-out/k8-fastbuild/bin/")
 import pybind_kv
 
 # Change this to your local blockchain
-config_path = "ip_address.config"
+config_path = current_dir + "/ip_address.config"
 
 
 def set_value(key: str or int or float, value: str or int or float) -> bool:
